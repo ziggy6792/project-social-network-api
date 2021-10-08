@@ -159,7 +159,7 @@ Please time-box yourself to a maximum of **4 hours** of coding time for this act
 
 ### Technology
 
-You are required to use any of these languages: JavaScript, or Python.
+You are required to use any of these languages: NodeJS, or Python.
 
 You are allowed to use any frameworks for the language you chose, e.g. Flask, SQLAlchemy, Sequelize, Express
 
