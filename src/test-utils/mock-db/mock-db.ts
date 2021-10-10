@@ -7,18 +7,21 @@ export const dbDefault = {
       name: 'ivan',
       createdAt: '2021-10-10T13:06:56.441Z',
       updatedAt: '2021-10-10T13:06:56.441Z',
+      followUsers: [],
     },
     {
       _id: '6162e5780572be031a979e0d',
       name: 'eric',
       createdAt: '2021-10-10T13:07:04.222Z',
       updatedAt: '2021-10-10T13:07:04.222Z',
+      followUsers: [],
     },
     {
       _id: '6162e6cd0572be031a979e15',
       name: 'niko',
       createdAt: '2021-10-10T13:12:45.500Z',
       updatedAt: '2021-10-10T13:12:45.500Z',
+      followUsers: [],
     },
   ],
   feeds: [
@@ -77,4 +80,31 @@ export const dbDefault = {
       updatedAt: '2021-10-10T13:16:36.817Z',
     },
   ],
+};
+
+export const dbWithFollowUsers = {
+  users: [
+    {
+      _id: '6162e5700572be031a979e0b',
+      name: 'ivan',
+      createdAt: '2021-10-10T13:06:56.441Z',
+      updatedAt: '2021-10-10T13:06:56.441Z',
+      followUsers: [],
+    },
+    {
+      _id: '6162e5780572be031a979e0d',
+      name: 'eric',
+      createdAt: '2021-10-10T13:07:04.222Z',
+      updatedAt: '2021-10-10T13:07:04.222Z',
+      followUsers: [],
+    },
+    {
+      _id: '6162e6cd0572be031a979e15',
+      name: 'niko',
+      createdAt: '2021-10-10T13:12:45.500Z',
+      updatedAt: '2021-10-10T13:12:45.500Z',
+      followUsers: ['6162e5780572be031a979e0d'],
+    },
+  ],
+  feeds: [...dbDefault.feeds],
 };

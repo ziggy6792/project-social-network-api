@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-constructor */
 
-import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from 'type-graphql';
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root, Int } from 'type-graphql';
 import { Service } from 'typedi';
 import { Feed } from 'src/entities/feed.entity';
 import { FeedService } from 'src/services/feed.service';
@@ -16,7 +16,7 @@ export class FeedResolver {
   constructor(private readonly feedService: FeedService, private readonly userService: UserService) {}
 
   @Query(() => FeedList)
-  async listFeeds(@Arg('limit', { nullable: true }) limit: number, @Arg('nextCursor', { nullable: true }) nextCursor: string): Promise<FeedList> {
+  async listFeeds(@Arg('limit', () => Int, { nullable: true }) limit: number, @Arg('nextCursor', { nullable: true }) nextCursor: string): Promise<FeedList> {
     const list = await this.feedService.getMany(limit, nextCursor);
     return new FeedList(list);
   }
