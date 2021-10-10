@@ -1,10 +1,7 @@
 import { buildSchemaSync, ResolverData } from 'type-graphql';
 import { GraphQLSchema } from 'graphql';
 import { ObjectId } from 'mongodb';
-
-import { ClipResolver } from 'src/resolvers/clip.resolver';
-import { ReelResolver } from 'src/resolvers/reel.resolver';
-import { ClipTimelineItemResolver } from 'src/resolvers/clip-timeline-item.resolver';
+import { HelloWorldResolver } from 'src/resolvers/hello-world.resolver';
 import { TypegooseMiddleware } from './typegoose-middleware';
 import { ObjectIdScalar } from './object-id.scalar';
 import Context from './context';
@@ -15,7 +12,7 @@ export const getSchema = () => {
   schema =
     schema ||
     buildSchemaSync({
-      resolvers: [ClipResolver, ReelResolver, ClipTimelineItemResolver],
+      resolvers: [HelloWorldResolver],
       // register our custom, scoped IOC container by passing a extracting from resolver data function
       container: ({ context }: ResolverData<Context>) => context.container,
       // use document converting middleware

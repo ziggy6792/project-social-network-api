@@ -1,7 +1,5 @@
 /* eslint-disable max-classes-per-file */
-// import createListObject from 'src/domain/common-objects/higher-order-objects/create-list-object';
-import { Clip } from 'src/entities/clip.entity';
-import { Reel } from 'src/entities/reel.entity';
+
 import { Field, ObjectType } from 'type-graphql';
 import { IPaginateResult } from 'typegoose-cursor-pagination';
 
@@ -24,16 +22,4 @@ export class BaseList {
 
   @Field()
   totalCount: number;
-}
-
-@ObjectType()
-export class ClipList extends BaseList {
-  @Field(() => [Clip])
-  items: Clip[];
-}
-
-@ObjectType()
-export class ReelList extends BaseList {
-  @Field(() => [Reel])
-  items: Reel[];
 }

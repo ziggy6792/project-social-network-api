@@ -1,4 +1,4 @@
 export interface IMockDb {
-  reels?: any[];
-  clips?: any[];
+  users?: any[];
+  feeds?: any[];
 }
