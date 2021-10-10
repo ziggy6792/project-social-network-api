@@ -20,11 +20,9 @@ registerEnumType(Verb, {
 
 @ObjectType()
 export class Feed extends BaseEntity {
-  @Field((type) => ObjectId)
   @Property({ type: ObjectId })
   actor: Ref<User>;
 
-  @Field((type) => ObjectId)
   @Property({ type: ObjectId })
   target: Ref<User>;
 
