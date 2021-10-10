@@ -11,6 +11,15 @@ export default class BaseEntityService<T extends BaseEntity> {
 
   constructor(private model: BaseEntityModel<T>) {}
 
+  getPaginateOptions(limit: number, nextCursor: string): IPaginateOptions {
+    return {
+      sortField: 'createdAt',
+      sortAscending: true,
+      limit,
+      next: nextCursor,
+    };
+  }
+
   async getOne(id: Ref<T>): Promise<T> {
     if (!id) {
       return null;
@@ -19,12 +28,7 @@ export default class BaseEntityService<T extends BaseEntity> {
   }
 
   async getMany(limit?: number, nextCursor?: string, filter?: Partial<T>): Promise<IPaginateResult<T>> {
-    const options: IPaginateOptions = {
-      sortField: 'createdAt',
-      sortAscending: true,
-      limit,
-      next: nextCursor,
-    };
+    const options = this.getPaginateOptions(limit, nextCursor);
     return this.model.findPaged(options, filter);
   }
 

@@ -48,4 +48,14 @@ export class UserResolver {
     const list = await this.feedService.getFeedsByActor(user._id, limit, nextCursor);
     return new FeedList(list);
   }
+
+  @FieldResolver((of) => FeedList)
+  async friendsFeed(
+    @Root() user: User,
+    @Arg('limit', { nullable: true }) limit: number,
+    @Arg('nextCursor', { nullable: true }) nextCursor: string
+  ): Promise<FeedList> {
+    const list = await this.feedService.getFeedsByActors(user.followUsers, limit, nextCursor);
+    return new FeedList(list);
+  }
 }
