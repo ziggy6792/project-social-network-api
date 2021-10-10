@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 
+import { Feed } from 'src/entities/feed.entity';
 import { User } from 'src/entities/user.entity';
 import { Field, ObjectType } from 'type-graphql';
 import { IPaginateResult } from 'typegoose-cursor-pagination';
@@ -33,6 +34,6 @@ export class UserList extends BaseList {
 
 @ObjectType()
 export class FeedList extends BaseList {
-  @Field(() => [User])
-  items: User[];
+  @Field(() => [Feed])
+  items: Feed[];
 }

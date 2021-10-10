@@ -31,8 +31,12 @@ export class UserResolver {
   }
 
   @FieldResolver((of) => FeedList)
-  async myFeed(@Root() user: User): Promise<FeedList> {
-    const list = await this.feedService.getFeedsByActor(user._id);
+  async myFeed(
+    @Root() user: User,
+    @Arg('limit', { nullable: true }) limit: number,
+    @Arg('nextCursor', { nullable: true }) nextCursor: string
+  ): Promise<FeedList> {
+    const list = await this.feedService.getFeedsByActor(user._id, limit, nextCursor);
     return new FeedList(list);
   }
 }
