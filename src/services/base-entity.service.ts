@@ -28,7 +28,6 @@ export default class BaseEntityService<T extends BaseEntity> {
       limit,
       next: nextCursor,
     };
-
     return this.model.findPaged(options, filter);
   }
 
