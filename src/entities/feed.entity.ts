@@ -1,5 +1,6 @@
-import { prop as Property, getModelForClass, Ref } from '@typegoose/typegoose';
+import { prop as Property, getModelForClass } from '@typegoose/typegoose';
 import { ObjectId } from 'mongodb';
+import { Ref } from 'src/types';
 
 import { ObjectType, Field, registerEnumType } from 'type-graphql';
 import { PaginateModel } from 'typegoose-cursor-pagination';
@@ -21,11 +22,11 @@ registerEnumType(Verb, {
 export class Feed extends BaseEntity {
   @Field((type) => ObjectId)
   @Property({ type: ObjectId })
-  actor: Ref<User>[];
+  actor: Ref<User>;
 
   @Field((type) => ObjectId)
   @Property({ type: ObjectId })
-  target: Ref<User>[];
+  target: Ref<User>;
 
   @Field((type) => Verb)
   @Property({ type: String, enum: Verb })
