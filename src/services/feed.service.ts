@@ -8,17 +8,18 @@ import BaseEntityService from './base-entity.service';
 
 @Service()
 export class FeedService extends BaseEntityService<Feed> {
-  constructor() {
-    super(FeedModel);
+  constructor(private feedModel = FeedModel) {
+    super(feedModel);
   }
 
-  getFeedsByActor(user: Ref<User>, limit?: number, nextCursor?: string): Promise<IPaginateResult<Feed>> {
+  async getFeedsByActor(user: Ref<User>, limit?: number, nextCursor?: string): Promise<IPaginateResult<Feed>> {
     const options: IPaginateOptions = {
       sortField: 'createdAt',
       sortAscending: true,
       limit,
       next: nextCursor,
     };
-    return this.model.findPaged(options, { actor: { $eq: user } });
+    const bla = await this.feedModel.findPaged(options, { actor: { $eq: user } });
+    return bla;
   }
 }

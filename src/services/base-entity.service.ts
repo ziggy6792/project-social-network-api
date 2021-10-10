@@ -1,9 +1,6 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable class-methods-use-this */
 /* eslint-disable no-useless-constructor */
 import { Inject } from 'typedi';
-import { MongooseUpdate, Ref, BaseEntityModel } from 'src/types';
+import { BaseEntityModel, Ref } from 'src/types';
 import Context from 'src/graphql-setup/context';
 import { BaseEntity } from 'src/entities/base.entity';
 import { AddId } from 'src/inputs/types';
@@ -36,7 +33,7 @@ export default class BaseEntityService<T extends BaseEntity> {
   }
 
   public async updateOne(input: AddId<Partial<T>>): Promise<T> {
-    return this.model.findByIdAndUpdate(input.id, input as MongooseUpdate<T>, { new: true });
+    return this.model.findByIdAndUpdate(input.id, input as any, { new: true });
   }
 
   public async createMany(inputs: Partial<T>[]): Promise<T[]> {
