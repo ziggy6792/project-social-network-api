@@ -21,7 +21,7 @@ export default class BaseEntityService<T extends BaseEntity> {
     return this.model.findById(id);
   }
 
-  async getMany(limit?: number, filter?: Partial<T>, nextCursor?: string): Promise<IPaginateResult<T>> {
+  async getMany(limit?: number, nextCursor?: string, filter?: Partial<T>): Promise<IPaginateResult<T>> {
     const options: IPaginateOptions = {
       sortField: 'createdAt',
       sortAscending: true,

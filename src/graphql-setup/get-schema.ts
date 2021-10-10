@@ -2,6 +2,7 @@ import { buildSchemaSync, ResolverData } from 'type-graphql';
 import { GraphQLSchema } from 'graphql';
 import { ObjectId } from 'mongodb';
 import { HelloWorldResolver } from 'src/resolvers/hello-world.resolver';
+import { UserResolver } from 'src/resolvers/user.resolver';
 import { TypegooseMiddleware } from './typegoose-middleware';
 import { ObjectIdScalar } from './object-id.scalar';
 import Context from './context';
@@ -12,7 +13,7 @@ export const getSchema = () => {
   schema =
     schema ||
     buildSchemaSync({
-      resolvers: [HelloWorldResolver],
+      resolvers: [HelloWorldResolver, UserResolver],
       // register our custom, scoped IOC container by passing a extracting from resolver data function
       container: ({ context }: ResolverData<Context>) => context.container,
       // use document converting middleware

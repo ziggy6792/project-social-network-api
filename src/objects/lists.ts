@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 
+import { User } from 'src/entities/user.entity';
 import { Field, ObjectType } from 'type-graphql';
 import { IPaginateResult } from 'typegoose-cursor-pagination';
 
@@ -22,4 +23,10 @@ export class BaseList {
 
   @Field()
   totalCount: number;
+}
+
+@ObjectType()
+export class UserList extends BaseList {
+  @Field(() => [User])
+  items: User[];
 }
