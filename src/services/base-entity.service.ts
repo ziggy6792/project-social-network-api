@@ -9,7 +9,7 @@ import { IPaginateOptions, IPaginateResult } from 'typegoose-cursor-pagination';
 export default class BaseEntityService<T extends BaseEntity> {
   @Inject('context') protected readonly context: Context;
 
-  constructor(protected model: BaseEntityModel<T>) {}
+  constructor(private model: BaseEntityModel<T>) {}
 
   async getOne(id: Ref<T>): Promise<T> {
     if (!id) {

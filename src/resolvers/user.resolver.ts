@@ -8,6 +8,7 @@ import { ObjectId } from 'mongodb';
 import { FeedList, UserList } from 'src/objects/lists';
 import { CreateUserInput } from 'src/inputs/user.input';
 import { FeedService } from 'src/services/feed.service';
+import { Ref } from 'src/types';
 
 @Service()
 @Resolver((of) => User)
@@ -28,6 +29,14 @@ export class UserResolver {
   @Mutation(() => User)
   async createUser(@Arg('input', () => CreateUserInput) input: CreateUserInput): Promise<User> {
     return this.userService.createOne(input);
+  }
+
+  @Mutation(() => User)
+  async follow(
+    @Arg('actor', () => ObjectId, { nullable: true }) actor: Ref<User>,
+    @Arg('follow', () => ObjectId, { nullable: true }) follow: Ref<User>
+  ): Promise<User> {
+    return this.userService.follow(actor, follow);
   }
 
   @FieldResolver((of) => FeedList)
