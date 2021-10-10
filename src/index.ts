@@ -37,12 +37,11 @@ async function bootstrap() {
           console.log('instances left in memory:', instancesIds);
         },
       },
-    ], // TODO: remove when fixed: https://github.com/apollographql/apollo-server/pull/3525
+    ],
   });
 
   // start the server
-  // const { url } = await server.start.listen(4000);
-  // console.log(`Server is running, GraphQL Playground available at ${url}`);
+
   const app = express();
   await server.start();
   server.applyMiddleware({ app });
