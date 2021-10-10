@@ -30,3 +30,9 @@ export class UserList extends BaseList {
   @Field(() => [User])
   items: User[];
 }
+
+@ObjectType()
+export class FeedList extends BaseList {
+  @Field(() => [User])
+  items: User[];
+}
