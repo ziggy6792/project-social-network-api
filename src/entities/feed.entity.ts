@@ -11,7 +11,7 @@ export enum Verb {
   SHARE = 'share',
   LIKE = 'like',
   POST = 'post',
-  FOLLO = 'follow',
+  FOLLOW = 'follow',
 }
 
 registerEnumType(Verb, {

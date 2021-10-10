@@ -7,17 +7,10 @@ beforeAll(async () => {
   await testConn();
 });
 
-const listClipsQuery = `query listClips($filter: ListClipsFilter){
-  listClips(filter: $filter){
-    items {
-      id
-      name
-      description
-      startTimecode
-      endTimecode
-      standard
-      definition
-    }
+const createFeedMutation = `mutation createFeed($createFeedInput: CreateFeedInput!){ 
+  createFeed(input: $createFeedInput){    
+    verb
+    object
   }
 }`;
 
@@ -28,49 +21,21 @@ afterAll((done) => {
   done();
 });
 
-describe('Clip Resolver', () => {
-  it('should filter listClips correctly', async () => {
+describe('Feed Resolver', () => {
+  it('should create feed correctly', async () => {
     const response = await gCall({
-      source: listClipsQuery,
-      variableValues: { filter: { definition: 'SD', standard: 'PAL' } },
-    });
-
-    const expectedResponse = {
-      data: {
-        listClips: {
-          items: [
-            {
-              id: '61530b2a582122227ab76672',
-              name: 'Bud Light',
-              description: 'A factory is working on the new Bud Light Platinum.',
-              startTimecode: '00:00:00:00',
-              endTimecode: '00:00:30:12',
-              standard: 'PAL',
-              definition: 'SD',
-            },
-            {
-              id: '61530b2a582122227ab76674',
-              name: 'Audi',
-              description:
-                'A group of vampires are having a party in the woods. The vampire in charge of drinks (blood types) arrives in his Audi. The bright lights of the car kills   all of the vampires, with him wondering where everyone went afterwards.',
-              startTimecode: '00:00:00:00',
-              endTimecode: '00:01:30:00',
-              standard: 'PAL',
-              definition: 'SD',
-            },
-            {
-              id: '61530b2a582122227ab76675',
-              name: 'Chrysler',
-              description: 'Clint Eastwood recounts how the automotive industry survived the Great Recession.',
-              startTimecode: '00:00:00:00',
-              endTimecode: '00:00:10:14',
-              standard: 'PAL',
-              definition: 'SD',
-            },
-          ],
+      source: createFeedMutation,
+      variableValues: {
+        createFeedInput: {
+          actor: '6162e6cd0572be031a979e15',
+          verb: 'POST',
+          object: 'test:post',
+          target: '6162e5780572be031a979e0d',
         },
       },
-    };
+    });
+
+    const expectedResponse = { data: { createFeed: { verb: 'POST', object: 'test:post' } } };
 
     expect(response).toMatchObject(expectedResponse);
   });

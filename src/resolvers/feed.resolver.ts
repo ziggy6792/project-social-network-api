@@ -6,7 +6,7 @@ import { Feed } from 'src/entities/feed.entity';
 import { FeedService } from 'src/services/feed.service';
 import { ObjectId } from 'mongodb';
 import { FeedList } from 'src/objects/lists';
-import { CreateFeedInput } from 'src/inputs/reel.input';
+import { CreateFeedInput } from 'src/inputs/feed.input';
 
 @Service()
 @Resolver((of) => Feed)

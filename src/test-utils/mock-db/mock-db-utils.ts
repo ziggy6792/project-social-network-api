@@ -1,10 +1,15 @@
 import { ReturnModelType } from '@typegoose/typegoose';
 import { AnyParamConstructor } from '@typegoose/typegoose/lib/types';
+import { FeedModel } from 'src/entities/feed.entity';
+import { UserModel } from 'src/entities/user.entity';
 
 import { connectMongo } from 'src/utils/database';
 import { IMockDb } from './types';
 
-const modelMap = {};
+const modelMap = {
+  users: UserModel,
+  feeds: FeedModel,
+};
 
 const populateDb = async (mockDb: IMockDb): Promise<void> => {
   const mongoose = await connectMongo();
