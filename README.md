@@ -1,6 +1,6 @@
 # Backend Engineer Interview Project
 
-## Archetecture Design
+## Architecture Design
 
 Pdfs are in root folder. But for higher quality version see [here](https://miro.com/app/board/o9J_lrJNYVw=/?invite_link_id=803757951231)
 
