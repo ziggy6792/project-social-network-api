@@ -39,6 +39,14 @@ export class UserResolver {
     return this.userService.follow(actor, follow);
   }
 
+  @Mutation(() => User)
+  async unfollow(
+    @Arg('actor', () => ObjectId, { nullable: true }) actor: Ref<User>,
+    @Arg('follow', () => ObjectId, { nullable: true }) follow: Ref<User>
+  ): Promise<User> {
+    return this.userService.unfollow(actor, follow);
+  }
+
   @FieldResolver((of) => FeedList)
   async myFeed(
     @Root() user: User,
