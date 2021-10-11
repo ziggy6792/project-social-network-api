@@ -13,6 +13,12 @@ const createFeedMutation = `mutation createFeed($createFeedInput: CreateFeedInpu
   createFeed(input: $createFeedInput){    
     verb
     object
+    actor{
+      name
+    }
+    target{
+      name
+    }
   }
 }`;
 
@@ -81,7 +87,7 @@ describe('Feed Resolver', () => {
       },
     });
 
-    const expectedResponse = { data: { createFeed: { verb: 'POST', object: 'test:post' } } };
+    const expectedResponse = { data: { createFeed: { verb: 'POST', object: 'test:post', actor: { name: 'niko' }, target: { name: 'eric' } } } };
 
     expect(response).toMatchObject(expectedResponse);
   });
