@@ -1,5 +1,23 @@
 # Backend Engineer Interview Project
 
+## Archetecture Design
+
+Pdfs are in root folder. But for higher quality version see [here](https://miro.com/app/board/o9J_lrJNYVw=/?invite_link_id=803757951231)
+
+## Getting Started for developers
+
+Make sure you have node, npm and docker installed (you can run `node -v`, `npm -v` and `docker -v` to check)
+`yarn install`
+`yarn start` Will start mongo db dev container and api in dev mode (uses `ts-node-dev` to restart on every change)
+
+## Run Tests
+
+`yarn test`
+
+## Build and run with docker
+
+`docker-compose up`
+
 ## Background
 
 For any social network, activity feed is a common feature that usually starts off simple to implement but can grow in complexity as the number of users increases. This can cause performance issues that can cripple user experience.
@@ -9,6 +27,7 @@ For any social network, activity feed is a common feature that usually starts of
 Design a scalable and robust system that implements a social network activity feed system base on the User Stories below, and provide a working proof-of-concept application to demonstrate your design.
 
 You are required to:
+
 1. Provide an architecture design that can scale to millions of users (please propose relevant technology to use). This test is about evaluating your skills and thought process.
    - You are expected to provide an architecture drawing of your design for the subsequent technical discussion round
    - Please commit your drawing to this git repository
@@ -19,16 +38,17 @@ You are required to:
 
 ## User Stories
 
-*All API design proposal below are not mandatory. Feel free to implement your own design to taste, as long as it fulfills the requirements. Also, please propose JSON responses for any errors that might occur.*
+_All API design proposal below are not mandatory. Feel free to implement your own design to taste, as long as it fulfills the requirements. Also, please propose JSON responses for any errors that might occur._
 
 For this document:
- - We will assume you are the user `ivan`, together with other users named `niko` and `eric`.
- - Anyone that you follow is considered a **friend**.
- - You are expected to implement users stories that are marked **[P0]**.
-   - **[P0]** Features that are required for a minimum viable product (MVP)
-   - **[P1]** Features that are essential but not required to make this MVP work
-   - **[P2]** Features that are related but not considered essential to this MVP
- - You are free to implement all user stories if time permitting.
+
+- We will assume you are the user `ivan`, together with other users named `niko` and `eric`.
+- Anyone that you follow is considered a **friend**.
+- You are expected to implement users stories that are marked **[P0]**.
+  - **[P0]** Features that are required for a minimum viable product (MVP)
+  - **[P1]** Features that are essential but not required to make this MVP work
+  - **[P2]** Features that are related but not considered essential to this MVP
+- You are free to implement all user stories if time permitting.
 
 **1. [P0] As a user, I need an API that allows me to build an activity feed.**
 
@@ -43,26 +63,26 @@ The API should receive the following activity object as a JSON request:
 }
 ```
 
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `actor` | string | The actor performing the activity represented by user name |
-| `verb` | string | The verb of the activity, please include at least 3 types. e.g. `like`, `share`, `post` |
-| `object` | string | Optional: The object of the activity, e.g. `photo:1` |
-| `target` | string | Optional: Target of the activity, usually another user name |
+| Name     | Type   | Description                                                                             |
+| -------- | ------ | --------------------------------------------------------------------------------------- |
+| `actor`  | string | The actor performing the activity represented by user name                              |
+| `verb`   | string | The verb of the activity, please include at least 3 types. e.g. `like`, `share`, `post` |
+| `object` | string | Optional: The object of the activity, e.g. `photo:1`                                    |
+| `target` | string | Optional: Target of the activity, usually another user name                             |
 
 More examples of activity objects:
 
-| `actor` | `verb` | `object` | `target` |
-| ------- | ------ | -------- | -------- |
-| `ivan` | `share` | `post:1` | `eric` |
-| `niko` | `like` | `post:2` | `ivan` |
-| `eric` | `post` | `post:3` | null |
-| `ivan` | `follow` | null | `niko` |
+| `actor` | `verb`   | `object` | `target` |
+| ------- | -------- | -------- | -------- |
+| `ivan`  | `share`  | `post:1` | `eric`   |
+| `niko`  | `like`   | `post:2` | `ivan`   |
+| `eric`  | `post`   | `post:3` | null     |
+| `ivan`  | `follow` | null     | `niko`   |
 
 Hint:
-- The response from the API call should be fast
-- The requirement does not mandate side effects to be in real time; i.e. any updates to a given activity feed *do not need to appear in other feeds immediately*
 
+- The response from the API call should be fast
+- The requirement does not mandate side effects to be in real time; i.e. any updates to a given activity feed _do not need to appear in other feeds immediately_
 
 **2. [P0] As a user, I need an API to read my own activity feed that contains my activities posted via the above API.**
 
@@ -145,7 +165,8 @@ Here are some examples of how the `related` field looks like:
 ```
 
 This will allow us to present the data as:
- - `eric` posted `post:1` (`niko` and you liked it)
+
+- `eric` posted `post:1` (`niko` and you liked it)
 
 ## Constraints
 
@@ -154,6 +175,7 @@ This will allow us to present the data as:
 7 days from start of project. Please feel free to submit your work any time, before the dateline. If you need more time to complete the project due to existing work commitments, do let us know.
 
 Please time-box yourself to a maximum of **4 hours** of coding time for this activity.
+
 - Plan your use of time carefully
 - Do not spend time on features that are not mentioned in the user stories (eg authentication)
 
@@ -170,6 +192,7 @@ Please maintain a descriptive and clear Git commit history as it would allow us 
 ### Evaluation Criteria
 
 Your project will be assessed in the following areas:
+
 - Timely completion of the project, and respecting the time-boxing
 - Clear communication on the architecture design
 - Fulfilment of requirements and specifications
