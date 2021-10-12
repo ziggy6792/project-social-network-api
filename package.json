@@ -2,7 +2,7 @@
   "name": "telepathy-assignment-backend",
   "version": "1.0.0",
   "description": "Telepathy Assignment Backend",
-  "main": "./dist/app.js",
+  "main": "./dist/index.js",
   "private": true,
   "scripts": {
     "lint": "npx eslint --fix ./src/**/*.*",
