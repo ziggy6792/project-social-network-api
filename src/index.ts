@@ -3,7 +3,6 @@ import { ApolloServer } from 'apollo-server-express';
 import Container, { ContainerInstance } from 'typedi';
 import { GraphQLRequestContext } from 'apollo-server-plugin-base';
 import express from 'express';
-// import { setSamplesInContainer } from './recipe/recipe.samples';
 import { v4 as uuidv4 } from 'uuid';
 import { getSchema } from './graphql-setup/get-schema';
 import { connectMongo } from './utils/database';
@@ -52,4 +51,3 @@ async function bootstrap() {
 }
 
 bootstrap();
-//
