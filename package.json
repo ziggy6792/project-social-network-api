@@ -1,7 +1,7 @@
 {
-  "name": "telepathy-assignment-backend",
+  "name": "horangi-assignment-backend",
   "version": "1.0.0",
-  "description": "Telepathy Assignment Backend",
+  "description": "Horangi Assignment Backend",
   "main": "./dist/index.js",
   "private": true,
   "scripts": {
