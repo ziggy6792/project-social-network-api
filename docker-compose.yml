@@ -6,12 +6,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - '4001:4000'
-    container_name: horangi-assignment_nodejs-api
+    container_name: social-network_nodejs-api
     links:
       - mongo-db
   mongo-db:
     image: mongo:latest
-    container_name: horangi-assignment_mongo-db
+    container_name: social-network_mongo-db
     # environment:
     # MONGO_INITDB_ROOT_USERNAME: root
     # MONGO_INITDB_ROOT_PASSWORD: rootpassword

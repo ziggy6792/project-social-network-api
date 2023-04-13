@@ -1,7 +1,7 @@
 # Builder
 FROM node:latest as builder
 
-WORKDIR /horangi-assignment
+WORKDIR /social-network
 COPY ./package.json .
 COPY ./tsconfig.json .
 COPY ./src/ ./src/
@@ -9,20 +9,20 @@ COPY ./src/ ./src/
 RUN yarn install
 RUN yarn build
 
-WORKDIR /horangi-assignment
+WORKDIR /social-network
 
 # Runner
 FROM node:latest as runner
 
-WORKDIR /horangi-assignment
-COPY --from=builder /horangi-assignment/package.json .
-COPY --from=builder /horangi-assignment/dist/ ./dist/
+WORKDIR /social-network
+COPY --from=builder /social-network/package.json .
+COPY --from=builder /social-network/dist/ ./dist/
 
 ENV NODE_ENV production
 
 RUN yarn install
 
-WORKDIR /horangi-assignment
+WORKDIR /social-network
 
 EXPOSE 4000
 

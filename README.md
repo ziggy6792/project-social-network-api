@@ -6,7 +6,7 @@ There is a demo recording [here](https://www.dropbox.com/s/4s3fdrl0my417lg/Demo.
 
 ## Architecture Design
 
-Pdfs are in root folder. But for higher quality version see [here](https://miro.com/app/board/o9J_lrJNYVw=/?invite_link_id=803757951231)
+See [here](https://miro.com/app/board/o9J_lrJNYVw=/?invite_link_id=803757951231)
 
 ## Getting Started for developers
 
