@@ -1,4 +1,4 @@
-# Backend Engineer Interview Project
+# Social Network Api
 
 ## Demo
 
@@ -26,7 +26,7 @@ Make sure you have node, npm and docker installed (you can run `node -v`, `npm -
 
 For any social network, activity feed is a common feature that usually starts off simple to implement but can grow in complexity as the number of users increases. This can cause performance issues that can cripple user experience.
 
-## Your Task
+## Brief
 
 Design a scalable and robust system that implements a social network activity feed system base on the User Stories below, and provide a working proof-of-concept application to demonstrate your design.
 
